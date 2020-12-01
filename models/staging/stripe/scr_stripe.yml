@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+    - name: stripe
+      description: Raw data from stripe application.
+      database: dbt-tutorial
+      tables:
+        - name: payment
+          description: Raw payment data from application
+          columns:
+            - name: id
+              description: Primary key for payment data.
+              tests:
+                - unique
+                - not_null
