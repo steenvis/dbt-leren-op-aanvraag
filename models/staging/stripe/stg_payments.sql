@@ -5,8 +5,8 @@ select
     paymentmethod as payment_method,
     status,
 
-    -- amount in source is in cents, divide by 100 for dollars
-    amount / 100 as amount,
+    -- amount in source is in cents, using macro *cents_to_dollars*
+    {{ cents_to_dollars('amount', 4) }},
     created as created_at
 
 from {{ source('stripe','payment') }}
